@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+  
+    {% block content %}
+    {% load static %}
+    {% for prompt in prompts %}
+    <div class="prompt-wrapper">
+        <p> <a href=" {% url 'prompt_details' prompt.id %} "> <span><i style='font-size:24px ;color:white' class='far'>&#xf044;</i> </span></a></p>
+        {{prompt.topic}}
+        <br>
+        <h4 style="color: var(--primary-color);"> 
+          writeups: {{ prompt.prompt.count }}
+        </h4>
+        <p class="cl"> <span> {{prompt.date|date:'d M '}} </span>  <span> {{prompt.prompt.all.count}} Writeups </span> <span><i style='font-size:24px ;color:white' class='far'>&#xf044;</i> </span> </p>
+    </div>
+<style>
+  .cl{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    font-size: small;
+  }
+</style>
+    {% endfor %}
+    {% endblock %}

@@ -1,0 +1,22 @@
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+<h3> Edit post </h3>
+<form   method="post">
+    {% csrf_token %} 
+    <input  type="text" name="author" class="form_control" placeholder="Enter Password" required id="id_author"value=2 hidden></input>
+{{form.as_p}}
+
+{{form.media}}
+
+<input type="submit" value="Update" class="followbtn">
+</form>
+{% endblock %}
+
+
+<style>
+    .form_control2{
+        width: 300px;
+    }
+</style>

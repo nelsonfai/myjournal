@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+<article> 
+    <div class="articletitle">
+        <h2>{{article.title}}</h2>
+    </div>
+
+    <p class="body">
+        {{article.body|safe}}
+    </p>
+
+    <p class="post_engangement">
+        <span> <img src="https://img.icons8.com/sf-regular/25/undefined/facebook-like.png"/ class="icon1" >{{article.likes.count}} </span> 
+        <span> <img src="https://img.icons8.com/fluency-systems-regular/18/000000/comments--v1.png" class="icon" />  {{article.comments.count}}</span> 
+    </p>
+    <br>
+    <br>
+
+    {% for comment in article.comments.all %}
+    <div class=" comments">
+        <div class="imagewrapper">
+            <span class="image"> {{comment.author.user.username|slice:"1"|title}} </span> <small> by {{comment.author.user}} </small>  
+        </div>
+        <p> {{comment.comment}}</p>
+        <hr>
+    </div>  
+    {% endfor %}
+    
+
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text"  name="articleid" value={{article.id}} hidden>
+    {{form}}
+    <input type="submit" value="Comment" class="submitbtn">
+</form>
+   
+</article>
+<style>
+    article{
+        padding: 5%;
+    }
+    .icon{
+        margin-bottom: -6px;
+    }
+    .icon1{
+        margin-bottom: -10px;  
+    }
+    .snippet{
+    margin-top: 10px;
+    }
+    .body{
+        margin-block: 30px;
+    }
+    .comments{
+        padding-block: 10px;
+    }
+</style>
+{% endblock %}

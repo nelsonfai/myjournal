@@ -1,0 +1,26 @@
+
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<form  method="post">
+    {% csrf_token %}
+   
+<p> {{form.title.label}}:</p>
+{{form.title}}
+<p> {{form.body.label}}:</p>
+{{form.body}}
+<p> {{form.tags.label}}:</p>
+{{form.tags}}
+<p> {{form.status.label}}:</p>
+{{form.status}}
+{{form.media}}
+<br>
+<input type="submit" value="Send" class="form_control submitbtn">
+</form>
+{% endblock %}
+<style>
+    .form_control2{
+        width: 300px;
+    }
+</style>
