@@ -1,1 +1,1 @@
-web: gunicorn pricetracker.wsgi --log-file -
+web: gunicorn myjournal.wsgi --log-file -
